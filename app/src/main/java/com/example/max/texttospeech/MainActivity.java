@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import java.util.Locale;
 
@@ -15,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
     Button btnTalk;
     TextToSpeech tts;
+    EditText talkText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         setContentView(R.layout.activity_main);
 
         btnTalk = findViewById(R.id.btnTalk);
+        talkText = findViewById(R.id.talkText);
     }
 
     @Override
@@ -50,6 +54,11 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     protected void onStop() {
         super.onStop();
         tts.shutdown();
+    }
+
+    public void btnTalk(View view){
+        String content = talkText.getText().toString();
+        speechOut(content);
     }
 
     private void speechOut(String msg){
