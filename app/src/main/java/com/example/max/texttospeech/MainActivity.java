@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                     }
                 }
                 else if(Text.equals("Cantonese")) {
-                    int result = tts.setLanguage(new Locale("zh", "HK"));
+                    int result = tts.setLanguage(new Locale("yue", "HK"));
                     if(result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                         Log.e("TTS", "Language is not supported");
                     } else {
